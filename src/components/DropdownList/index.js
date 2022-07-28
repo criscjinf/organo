@@ -6,7 +6,11 @@ class DropdownList extends React.Component {
     return (
       <div className="dropdownList">
         <label>{this.props.label}</label>
-        <select required={this.props.required}>
+        <select
+          required={this.props.required}
+          onChange={event => this.props.whenChanged(event.target.value)}
+          value={this.props.value}
+        >
           {this.props.items.map(item => <option key={item}>{item}</option>)} 
         </select>
       </div>

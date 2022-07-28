@@ -6,9 +6,20 @@ import './Form.css'
 
 class Form extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      nome: '',
+      cargo: '',
+      imagem: '',
+      team: ''
+    }
+  }
+
   aoSalvar(event) {
     event.preventDefault()
-    console.log('Salvou')
+    const {nome, cargo, imagem, team} = this.state
+    console.log('Salvou => ', nome, cargo, imagem, team)
   }
   render() {
     const teams = [
@@ -22,12 +33,34 @@ class Form extends React.Component {
     ]
     return (
       <section className="collaboratorForm">
-        <form onSubmit={this.aoSalvar}>
+        <form onSubmit={(event) => this.aoSalvar(event)}>
           <h2>Preencha os dados para criar o card do colaborador</h2>
-          <TextField required={true} label="Nome" placeholder="Digite seu nome"/>
-          <TextField label="Cargo" placeholder="Digite seu cargo"/>
-          <TextField label="Imagem" placeholder="Digite o endereço da imagem"/>
-          <DropdownList required={true} items={teams} label='Times'/>
+          <TextField
+            value={this.state.nome}
+            required={true}
+            label="Nome"
+            placeholder="Digite seu nome"
+            whenTyping={value => this.setState({nome: value})}
+          />
+          <TextField 
+            value={this.state.cargo}
+            label="Cargo"
+            placeholder="Digite seu cargo"
+            whenTyping={value => this.setState({cargo: value})}
+          />
+          <TextField
+            value={this.state.imagem}
+            label="Imagem"
+            placeholder="Digite o endereço da imagem"
+            whenTyping={value => this.setState({imagem: value})}
+          />
+          <DropdownList 
+            required={true}
+            items={teams}
+            label='Times'
+            value={this.state.team}
+            whenChanged={value => this.setState({team: value})}
+          />
           <Button>
             Criar Card
           </Button>
