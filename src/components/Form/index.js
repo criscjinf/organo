@@ -9,17 +9,17 @@ class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      nome: '',
-      cargo: '',
-      imagem: '',
+      name: '',
+      office: '',
+      image: '',
       team: ''
     }
   }
 
   aoSalvar(event) {
     event.preventDefault()
-    const {nome, cargo, imagem, team} = this.state
-    console.log('Salvou => ', nome, cargo, imagem, team)
+    const {name, office, image, team} = this.state
+    this.props.onSaveCollaborator({name, office, image, team})
   }
   render() {
     const teams = [
@@ -36,23 +36,23 @@ class Form extends React.Component {
         <form onSubmit={(event) => this.aoSalvar(event)}>
           <h2>Preencha os dados para criar o card do colaborador</h2>
           <TextField
-            value={this.state.nome}
+            value={this.state.name}
             required={true}
             label="Nome"
             placeholder="Digite seu nome"
-            whenTyping={value => this.setState({nome: value})}
+            whenTyping={value => this.setState({name: value})}
           />
           <TextField 
-            value={this.state.cargo}
+            value={this.state.office}
             label="Cargo"
             placeholder="Digite seu cargo"
-            whenTyping={value => this.setState({cargo: value})}
+            whenTyping={value => this.setState({office: value})}
           />
           <TextField
-            value={this.state.imagem}
+            value={this.state.image}
             label="Imagem"
             placeholder="Digite o endereço da imagem"
-            whenTyping={value => this.setState({imagem: value})}
+            whenTyping={value => this.setState({image: value})}
           />
           <DropdownList 
             required={true}
