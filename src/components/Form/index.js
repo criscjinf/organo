@@ -6,6 +6,7 @@ import './Form.css'
 
 class Form extends React.Component {
   
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -22,15 +23,6 @@ class Form extends React.Component {
     this.props.onSaveCollaborator({name, office, image, team})
   }
   render() {
-    const teams = [
-      'Programação',
-      'Front-End',
-      'Data-Science',
-      'Devops',
-      'UX e Design',
-      'Mobile',
-      'Inovação e Gestão',
-    ]
     return (
       <section className="collaboratorForm">
         <form onSubmit={(event) => this.aoSalvar(event)}>
@@ -56,7 +48,7 @@ class Form extends React.Component {
           />
           <DropdownList 
             required={true}
-            items={teams}
+            items={this.props.teams}
             label='Times'
             value={this.state.team}
             whenChanged={value => this.setState({team: value})}
