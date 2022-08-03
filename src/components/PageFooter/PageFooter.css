@@ -1,0 +1,17 @@
+.pageFooter {
+  background-color: #6278F7;
+  color: #fff;
+  padding: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pageFooter ul li {
+  display: inline-block;
+  margin-right: 32px;
+}
+
+.pageFooter ul li:last-child {
+  margin: 0;
+}

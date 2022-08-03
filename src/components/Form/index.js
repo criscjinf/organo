@@ -17,15 +17,16 @@ class Form extends React.Component {
     }
   }
 
-  aoSalvar(event) {
+  onSave(event) {
     event.preventDefault()
     const {name, office, image, team} = this.state
     this.props.onSaveCollaborator({name, office, image, team})
+    this.setState({name: '', office: '', image: '', team: ''})
   }
   render() {
     return (
       <section className="collaboratorForm">
-        <form onSubmit={(event) => this.aoSalvar(event)}>
+        <form onSubmit={(event) => this.onSave(event)}>
           <h2>Preencha os dados para criar o card do colaborador</h2>
           <TextField
             value={this.state.name}

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Banner from './components/Banner';
 import Form from './components/Form';
+import PageFooter from './components/PageFooter';
 import Team from './components/Team';
 
 function App() {
@@ -52,7 +53,15 @@ function App() {
     <div className="App">
       <Banner/>
       <Form teams={teams.map(team => team.name)} onSaveCollaborator={collaborator => newCollaboratorAdd(collaborator)}/>
-      {teams.map((team => <Team name={team.name} key={team.name} primaryColor={team.primaryColor} secundaryColor={team.secundaryColor}/>))}
+      {teams.map((team => <Team 
+        name={team.name}
+        key={team.name}
+        primaryColor={team.primaryColor}
+        secundaryColor={team.secundaryColor}
+        collaborators={collaboratores.filter(collaborator => collaborator.team === team.name)}
+      />)
+      )}
+      <PageFooter/>
     </div>
   );
 }

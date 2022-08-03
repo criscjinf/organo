@@ -11,6 +11,7 @@ class DropdownList extends React.Component {
           onChange={event => this.props.whenChanged(event.target.value)}
           value={this.props.value}
         >
+          <option value=""/>
           {this.props.items.map(item => <option key={item}>{item}</option>)} 
         </select>
       </div>
